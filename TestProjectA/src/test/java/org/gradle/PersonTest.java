@@ -1,12 +1,20 @@
 package org.gradle;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class PersonTest {
-    @Test
-    public void canConstructAPersonWithAName() {
-        Person person = new Person("Larry");
-        assertEquals("Larry", person.getName());
-    }
+
+	@Test
+	public void canConstructAPersonWithAName() {
+		Person person = new Person("Larry");
+		assertEquals("Larry", person.getName());
+	}
+
+	@Test
+	public void canConstructAPersonWithEmptyName() {
+		Person person = new Person("");
+		assertEquals("", person.getName());
+	}
 }
