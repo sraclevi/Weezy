@@ -25,3 +25,5 @@ dependencies {
 test {
     systemProperties 'property': 'value'
 }
+
+test.scanForTestClasses = false
