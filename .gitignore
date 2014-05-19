@@ -1,0 +1,9 @@
+*.class
+.metadata/*
+.gradle/*
+.settings/*
+*/RemoteSystemTempFiles/*
+*/.settings/*
+*/.classpath
+*/.project
+
