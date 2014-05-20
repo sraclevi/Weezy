@@ -1,12 +1,13 @@
 package org.gradle;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class PersonWrapperTest {
-    @Test
-    public void canConstructAPersonWithAName() {
-        PersonWrapper person = new PersonWrapper("Larry");
-        assertEquals("Larry", person.getName());
-    }
+	@Test
+	public void canConstructAPersonWithAName() {
+		PersonWrapper person = new PersonWrapper("Lary");
+		assertEquals("Larry", person.getName());
+	}
 }
