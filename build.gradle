@@ -14,4 +14,12 @@ subprojects {
      ignoreFailures = true
     }
 
+    findbugsTask {
+      reports {
+        xml {
+          destination "build/findbugs.xml"
+        }
+      }
+    }
+
 }
