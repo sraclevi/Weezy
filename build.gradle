@@ -14,9 +14,11 @@ subprojects {
      ignoreFailures = true
     }
 
-    findbugsTask {
+    tasks.withType(FindBugs) {
       reports {
         xml {
+          xml.enabled = true
+          html.enabled = false
           destination "build/findbugs.xml"
         }
       }
