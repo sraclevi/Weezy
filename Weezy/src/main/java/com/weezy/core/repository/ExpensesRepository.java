@@ -18,9 +18,22 @@ public class ExpensesRepository {
 	}
 
 	public Collection<Expense> findAll() {
-		expenses.put(UUID.randomUUID(), new Expense());
 		return Collections.unmodifiableList(new ArrayList<Expense>(expenses
 				.values()));
 	}
 
+	public Expense save(Expense expense) {
+		expenses.put(expense.getKey(), expense);
+		return expense;
+	}
+
+	public Expense findById(UUID uuid) {
+		return expenses.get(uuid);
+	}
+
+	public synchronized void delete(UUID uuid) {
+		if (expenses.containsKey(uuid)) {
+			expenses.remove(uuid);
+		}
+	}
 }

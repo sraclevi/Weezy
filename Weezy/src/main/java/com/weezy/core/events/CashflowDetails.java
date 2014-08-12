@@ -1,22 +1,20 @@
-package com.weezy.rest.domain;
+package com.weezy.core.events;
 
 import org.joda.time.DateTime;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.weezy.rest.domain.CashflowFrequency;
 
-public abstract class Cashflow {
+public class CashflowDetails {
 
 	protected String			name;
 	protected int				amount;
+	protected DateTime			from;
+	protected DateTime			to;
 	protected CashflowFrequency	frequency;
 
-	@JsonSerialize(using = CustomDateSerializer.class)
-	protected DateTime			from;
-	@JsonSerialize(using = CustomDateSerializer.class)
-	protected DateTime			to;
-
-	public Cashflow(String name, int amount, DateTime from, DateTime to,
+	public CashflowDetails(String name, int amount, DateTime from, DateTime to,
 			CashflowFrequency frequency) {
+		super();
 		this.name = name;
 		this.amount = amount;
 		this.from = from;

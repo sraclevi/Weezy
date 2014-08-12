@@ -1,27 +1,32 @@
-package com.weezy.rest.domain;
+package com.weezy.core.domain;
+
+import java.util.UUID;
 
 import org.joda.time.DateTime;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.weezy.rest.domain.CashflowFrequency;
 
-public abstract class Cashflow {
+public class Cashflow {
 
+	protected final UUID		key;
 	protected String			name;
 	protected int				amount;
-	protected CashflowFrequency	frequency;
-
-	@JsonSerialize(using = CustomDateSerializer.class)
 	protected DateTime			from;
-	@JsonSerialize(using = CustomDateSerializer.class)
 	protected DateTime			to;
+	protected CashflowFrequency	frequency;
 
 	public Cashflow(String name, int amount, DateTime from, DateTime to,
 			CashflowFrequency frequency) {
+		this.key = UUID.randomUUID();
 		this.name = name;
 		this.amount = amount;
 		this.from = from;
 		this.to = to;
 		this.frequency = frequency;
+	}
+
+	public UUID getKey() {
+		return key;
 	}
 
 	public String getName() {
