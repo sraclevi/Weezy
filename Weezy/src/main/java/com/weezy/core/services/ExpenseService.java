@@ -3,10 +3,10 @@ package com.weezy.core.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import com.weezy.core.domain.Expense;
 import com.weezy.core.events.AllExpensesEvent;
+import com.weezy.core.events.CreateExpenseEvent;
+import com.weezy.core.events.ExpenseCreatedEvent;
 import com.weezy.core.events.ExpenseDetails;
 import com.weezy.core.events.ExpenseEvent;
 import com.weezy.core.events.RequestAllExpensesEvent;
@@ -30,10 +30,28 @@ public class ExpenseService {
 		return new AllExpensesEvent(generatedDetails);
 	}
 
-	public ExpenseEvent requestExpenseDetails(
+	public ExpenseEvent requestExpense(
 			RequestExpenseEvent requestExpenseDetailsEvent) {
-		// TODO Auto-generated method stub
-		throw new NotImplementedException();
+		Expense expense = expensesRepository
+				.findById(requestExpenseDetailsEvent.getKey());
+
+		if (expense == null) {
+			return ExpenseEvent.notFound(requestExpenseDetailsEvent.getKey());
+		}
+
+		return new ExpenseEvent(requestExpenseDetailsEvent.getKey(),
+				expense.toExpenseDetails());
 	}
 
+	public ExpenseCreatedEvent createExpense(
+			CreateExpenseEvent createExpenseEvent) {
+
+		Expense expense = Expense.fromExpenseDetails(createExpenseEvent
+				.getExpenseDetails());
+
+		expense = expensesRepository.save(expense);
+
+		return new ExpenseCreatedEvent(expense.getKey(),
+				expense.toExpenseDetails());
+	}
 }

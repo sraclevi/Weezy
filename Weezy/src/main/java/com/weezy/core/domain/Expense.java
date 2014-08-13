@@ -16,4 +16,11 @@ public class Expense extends Cashflow {
 		return new ExpenseDetails(name, amount, from, to, frequency);
 	}
 
+	public static Expense fromExpenseDetails(ExpenseDetails expenseDetails) {
+		Expense expense = new Expense(expenseDetails.getName(),
+				expenseDetails.getAmount(), expenseDetails.getFrom(),
+				expenseDetails.getTo(), expenseDetails.getFrequency());
+		return expense;
+	}
+
 }

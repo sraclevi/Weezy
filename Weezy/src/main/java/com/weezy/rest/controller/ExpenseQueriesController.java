@@ -49,8 +49,7 @@ public class ExpenseQueriesController {
 	public ResponseEntity<Expense> viewExpense(@PathVariable String id) {
 
 		ExpenseEvent details = expenseService
-				.requestExpenseDetails(new RequestExpenseEvent(UUID
-						.fromString(id)));
+				.requestExpense(new RequestExpenseEvent(UUID.fromString(id)));
 
 		if (!details.isEntityFound()) {
 			return new ResponseEntity<Expense>(HttpStatus.NOT_FOUND);

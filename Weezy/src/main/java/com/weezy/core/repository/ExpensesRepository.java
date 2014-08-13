@@ -3,7 +3,6 @@ package com.weezy.core.repository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -13,7 +12,7 @@ public class ExpensesRepository {
 
 	private Map<UUID, Expense>	expenses;
 
-	public ExpensesRepository(HashMap<UUID, Expense> expenses) {
+	public ExpensesRepository(Map<UUID, Expense> expenses) {
 		this.expenses = expenses;
 	}
 

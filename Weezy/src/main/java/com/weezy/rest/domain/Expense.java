@@ -6,6 +6,10 @@ import com.weezy.core.events.ExpenseDetails;
 
 public class Expense extends Cashflow {
 
+	public Expense() {
+
+	}
+
 	public Expense(String name, int amount, DateTime from, DateTime to,
 			CashflowFrequency frequency) {
 		super(name, amount, from, to, frequency);

@@ -4,8 +4,14 @@ import java.util.UUID;
 
 public class RequestExpenseEvent {
 
-	public RequestExpenseEvent(UUID fromString) {
-		// TODO Auto-generated constructor stub
+	private UUID	key;
+
+	public RequestExpenseEvent(UUID key) {
+		this.key = key;
+	}
+
+	public UUID getKey() {
+		return key;
 	}
 
 }

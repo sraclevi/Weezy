@@ -1,6 +1,7 @@
 package com.weezy.config;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.context.annotation.Bean;
@@ -20,7 +21,7 @@ public class CoreConfig {
 
 	@Bean
 	public ExpensesRepository createRepo() {
-		return new ExpensesRepository(new HashMap<UUID, Expense>());
+		Map<UUID, Expense> expenses = new HashMap<UUID, Expense>();
+		return new ExpensesRepository(expenses);
 	}
-
 }
