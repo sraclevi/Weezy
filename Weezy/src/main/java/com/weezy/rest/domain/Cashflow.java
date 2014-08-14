@@ -1,5 +1,7 @@
 package com.weezy.rest.domain;
 
+import java.util.UUID;
+
 import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -7,6 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public abstract class Cashflow {
 
+	protected UUID				key;
 	protected String			name;
 	protected int				amount;
 
@@ -24,8 +27,9 @@ public abstract class Cashflow {
 
 	}
 
-	public Cashflow(String name, int amount, DateTime from, DateTime to,
-			CashflowFrequency frequency) {
+	public Cashflow(UUID key, String name, int amount, DateTime from,
+			DateTime to, CashflowFrequency frequency) {
+		this.key = key;
 		this.name = name;
 		this.amount = amount;
 		this.from = from;
@@ -71,6 +75,14 @@ public abstract class Cashflow {
 
 	public void setTo(DateTime to) {
 		this.to = to;
+	}
+
+	public UUID getKey() {
+		return key;
+	}
+
+	public void setKey(UUID key) {
+		this.key = key;
 	}
 
 }

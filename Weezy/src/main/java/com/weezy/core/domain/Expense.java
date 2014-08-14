@@ -13,7 +13,7 @@ public class Expense extends Cashflow {
 	}
 
 	public ExpenseDetails toExpenseDetails() {
-		return new ExpenseDetails(name, amount, from, to, frequency);
+		return new ExpenseDetails(key, name, amount, from, to, frequency);
 	}
 
 	public static Expense fromExpenseDetails(ExpenseDetails expenseDetails) {
