@@ -4,9 +4,12 @@ import static com.weezy.rest.controller.fixture.RestDataFixture.customKeyExpense
 
 import java.util.UUID;
 
+import org.junit.Ignore;
+
 import com.weezy.core.events.ExpenseCreatedEvent;
 import com.weezy.core.events.ExpenseEvent;
 
+@Ignore
 public class RestEventFixtures {
 
 	public static ExpenseEvent expenseDetailsNotFound(UUID key) {

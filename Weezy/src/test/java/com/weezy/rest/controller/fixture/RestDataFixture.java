@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.junit.Ignore;
+
 import com.weezy.core.events.AllExpensesEvent;
 import com.weezy.core.events.ExpenseDetails;
 import com.weezy.rest.domain.Expense;
@@ -15,6 +17,7 @@ import com.weezy.rest.domain.Expense;
 
  For anything more esoteric, create a new fixture in the test class.
  */
+@Ignore
 public class RestDataFixture {
 	public static final String	YUMMY_ITEM	= "yummy1";
 
@@ -49,6 +52,9 @@ public class RestDataFixture {
 	}
 
 	public static String standardExpenseJSON() {
-		return "{ \"items\": { \"yummy1\": 12, \"yummy15\": 42 } }";
+		String json = "{\"name\": \""
+				+ YUMMY_ITEM
+				+ "\",\"amount\": 98,\"from\": \"2014-08-07\",\"to\": \"2014-08-10\",\"frequency\": \"YEARLY\"}";
+		return json;
 	}
 }
