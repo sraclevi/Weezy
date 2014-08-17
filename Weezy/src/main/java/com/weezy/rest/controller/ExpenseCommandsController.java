@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.weezy.core.events.CreateExpenseEvent;
-import com.weezy.core.events.ExpenseCreatedEvent;
+import com.weezy.core.events.expense.CreateExpenseEvent;
+import com.weezy.core.events.expense.ExpenseCreatedEvent;
 import com.weezy.core.services.ExpenseService;
 import com.weezy.rest.domain.Expense;
 

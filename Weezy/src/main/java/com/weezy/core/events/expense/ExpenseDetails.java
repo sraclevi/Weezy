@@ -1,9 +1,10 @@
-package com.weezy.core.events;
+package com.weezy.core.events.expense;
 
 import java.util.UUID;
 
 import org.joda.time.DateTime;
 
+import com.weezy.core.events.CashflowDetails;
 import com.weezy.rest.domain.CashflowFrequency;
 
 public class ExpenseDetails extends CashflowDetails {

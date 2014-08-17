@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.weezy.core.events.ExpenseDetails;
-import com.weezy.core.events.ExpenseEvent;
-import com.weezy.core.events.RequestAllExpensesEvent;
-import com.weezy.core.events.RequestExpenseEvent;
+import com.weezy.core.events.expense.ExpenseDetails;
+import com.weezy.core.events.expense.ExpenseEvent;
+import com.weezy.core.events.expense.RequestAllExpensesEvent;
+import com.weezy.core.events.expense.RequestExpenseEvent;
 import com.weezy.core.services.ExpenseService;
 import com.weezy.rest.domain.Expense;
 

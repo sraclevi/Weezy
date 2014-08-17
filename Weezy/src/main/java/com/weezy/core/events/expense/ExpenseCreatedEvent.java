@@ -1,4 +1,4 @@
-package com.weezy.core.events;
+package com.weezy.core.events.expense;
 
 import java.util.UUID;
 

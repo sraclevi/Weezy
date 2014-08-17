@@ -1,12 +1,12 @@
-package com.weezy.core.events;
+package com.weezy.core.events.income;
 
 import java.util.UUID;
 
-public class RequestExpenseEvent {
+public class RequestIncomeEvent {
 
 	private UUID	key;
 
-	public RequestExpenseEvent(UUID key) {
+	public RequestIncomeEvent(UUID key) {
 		this.key = key;
 	}
 

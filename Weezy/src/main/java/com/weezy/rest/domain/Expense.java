@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.joda.time.DateTime;
 
-import com.weezy.core.events.ExpenseDetails;
+import com.weezy.core.events.expense.ExpenseDetails;
 
 public class Expense extends Cashflow {
 

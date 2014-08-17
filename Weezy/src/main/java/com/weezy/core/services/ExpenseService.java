@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.weezy.core.domain.Expense;
-import com.weezy.core.events.AllExpensesEvent;
-import com.weezy.core.events.CreateExpenseEvent;
-import com.weezy.core.events.ExpenseCreatedEvent;
-import com.weezy.core.events.ExpenseDetails;
-import com.weezy.core.events.ExpenseEvent;
-import com.weezy.core.events.RequestAllExpensesEvent;
-import com.weezy.core.events.RequestExpenseEvent;
+import com.weezy.core.events.expense.AllExpensesEvent;
+import com.weezy.core.events.expense.CreateExpenseEvent;
+import com.weezy.core.events.expense.ExpenseCreatedEvent;
+import com.weezy.core.events.expense.ExpenseDetails;
+import com.weezy.core.events.expense.ExpenseEvent;
+import com.weezy.core.events.expense.RequestAllExpensesEvent;
+import com.weezy.core.events.expense.RequestExpenseEvent;
 import com.weezy.core.repository.ExpensesRepository;
 
 public class ExpenseService {
