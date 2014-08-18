@@ -6,8 +6,8 @@ import java.util.UUID;
 
 import org.junit.Ignore;
 
-import com.weezy.core.events.AllExpensesEvent;
-import com.weezy.core.events.ExpenseDetails;
+import com.weezy.core.events.expense.AllExpensesEvent;
+import com.weezy.core.events.expense.ExpenseDetails;
 import com.weezy.rest.domain.Expense;
 
 //TODOCUMENT.  Use of test data fixture classes is considered good practice.

@@ -6,8 +6,8 @@ import java.util.UUID;
 
 import org.junit.Ignore;
 
-import com.weezy.core.events.ExpenseCreatedEvent;
-import com.weezy.core.events.ExpenseEvent;
+import com.weezy.core.events.expense.ExpenseCreatedEvent;
+import com.weezy.core.events.expense.ExpenseEvent;
 
 @Ignore
 public class RestEventFixtures {

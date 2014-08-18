@@ -22,7 +22,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.weezy.core.events.RequestExpenseEvent;
+import com.weezy.core.events.expense.RequestExpenseEvent;
 import com.weezy.core.services.ExpenseService;
 
 public class ViewExpenseIntegrationTest {
