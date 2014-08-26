@@ -1,0 +1,24 @@
+<div class="customers view">
+	<div class="container">
+		<header>
+			<h3>Expenses</h3>
+		</header>
+		<div class="row">
+			<div class="span3">
+				Name: <br /> <input data-ng-model="newExpense.name" type="text" placeholder="Name">
+			</div>
+			<div class="span3">
+				Amount: <br /> <input data-ng-model="newExpense.amount" type="text" placeholder="Amount">
+			</div>
+			<div class="span6">
+				Frequency: <br /> <input data-ng-model="newExpense.frequency" type="text" placeholder="Frequency">
+
+				<button id="submitExpense" class="btn btn-primary" type="button" data-ng-click="insertExpense()">Add
+					Expense</button>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div data-ng-repeat="expense in expenses">{{expense.name}} {{expense.key}}</div>
+	</div>
+</div>

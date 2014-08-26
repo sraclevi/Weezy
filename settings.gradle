@@ -1,1 +1,1 @@
-include "TestProjectA", "TestProjectB", "Weezy"
+include "Weezy"
