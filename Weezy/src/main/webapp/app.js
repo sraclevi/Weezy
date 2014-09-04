@@ -5,6 +5,9 @@ app.config(function($routeProvider) {
 	$routeProvider.when('/expenses', {
 		controller : 'ExpenseController',
 		templateUrl : '/partials/expenses.html'
+	}).when('/incomes', {
+		controller : 'IncomeController',
+		templateUrl : '/partials/incomes.html'
 	}).otherwise({
 		redirectTo : '/expenses'
 	});

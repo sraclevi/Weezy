@@ -1,0 +1,24 @@
+<div class="customers view">
+	<div class="container">
+		<header>
+			<h3>Incomes</h3>
+		</header>
+		<div class="row">
+			<div class="span3">
+				Name: <br /> <input data-ng-model="newIncome.name" type="text" placeholder="Name">
+			</div>
+			<div class="span3">
+				Amount: <br /> <input data-ng-model="newIncome.amount" type="text" placeholder="Amount">
+			</div>
+			<div class="span6">
+				Frequency: <br /> <input data-ng-model="newIncome.frequency" type="text" placeholder="Frequency">
+
+				<button id="submitIncome" class="btn btn-primary" type="button" data-ng-click="insertIncome()">Add
+					Income</button>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div data-ng-repeat="income in incomes">{{income.name}} {{income.key}}</div>
+	</div>
+</div>
