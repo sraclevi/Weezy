@@ -1,0 +1,17 @@
+<configuration>
+	<appender name="SQLROLLINGFILE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout>
+			<Pattern>%-4date | %msg %n</Pattern>
+		</layout>
+	</appender>
+
+	<logger name="org.hibernate.SQL" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="SQLROLLINGFILE" />
+	</logger>
+
+	<logger name="org.hibernate.type" additivity="false">
+		<level value="TRACE" />
+		<appender-ref ref="SQLROLLINGFILE" />
+	</logger>
+</configuration>

@@ -1,11 +1,17 @@
 package com.weezy.core.domain;
 
+import javax.persistence.Entity;
+
 import org.joda.time.DateTime;
 
 import com.weezy.core.events.expense.ExpenseDetails;
 import com.weezy.rest.domain.CashflowFrequency;
 
+@Entity
 public class Expense extends Cashflow {
+
+	protected Expense() {
+	}
 
 	public Expense(String name, int amount, DateTime from, DateTime to,
 			CashflowFrequency frequency) {

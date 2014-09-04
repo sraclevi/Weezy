@@ -17,7 +17,7 @@ import com.weezy.core.events.expense.RequestAllExpensesEvent;
 import com.weezy.core.services.ExpenseService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { CoreConfig.class })
+@ContextConfiguration(classes = { TestConfig.class })
 public class CoreDomainIntegrationTest {
 
 	@Autowired

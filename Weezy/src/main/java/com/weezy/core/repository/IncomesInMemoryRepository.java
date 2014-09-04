@@ -8,11 +8,11 @@ import java.util.UUID;
 
 import com.weezy.core.domain.Income;
 
-public class IncomesRepository {
+public class IncomesInMemoryRepository {
 
 	private Map<UUID, Income>	incomes;
 
-	public IncomesRepository(Map<UUID, Income> incomes) {
+	public IncomesInMemoryRepository(Map<UUID, Income> incomes) {
 		this.incomes = incomes;
 	}
 

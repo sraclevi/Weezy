@@ -11,13 +11,13 @@ import com.weezy.core.events.expense.ExpenseDetails;
 import com.weezy.core.events.expense.ExpenseEvent;
 import com.weezy.core.events.expense.RequestAllExpensesEvent;
 import com.weezy.core.events.expense.RequestExpenseEvent;
-import com.weezy.core.repository.ExpensesRepository;
+import com.weezy.core.repository.ExpenseRepository;
 
 public class ExpenseService {
 
-	private final ExpensesRepository	expensesRepository;
+	private final ExpenseRepository	expensesRepository;
 
-	public ExpenseService(ExpensesRepository expensesRepository) {
+	public ExpenseService(ExpenseRepository expensesRepository) {
 		this.expensesRepository = expensesRepository;
 	}
 

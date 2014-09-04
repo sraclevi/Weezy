@@ -4,38 +4,76 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp.BasicDataSource;
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.weezy.core.domain.Cashflow;
 import com.weezy.core.domain.Expense;
 import com.weezy.core.domain.Income;
-import com.weezy.core.repository.ExpensesRepository;
-import com.weezy.core.repository.IncomesRepository;
+import com.weezy.core.repository.ExpenseHibernateRepository;
+import com.weezy.core.repository.ExpenseRepository;
+import com.weezy.core.repository.IncomesInMemoryRepository;
 import com.weezy.core.services.ExpenseService;
 import com.weezy.core.services.IncomeService;
 
 @Configuration
+@EnableTransactionManagement
 public class CoreConfig {
 
 	@Bean
-	public ExpenseService createExpenseService(ExpensesRepository repo) {
+	public ExpenseService createExpenseService(ExpenseRepository repo) {
 		return new ExpenseService(repo);
 	}
 
 	@Bean
-	public ExpensesRepository createExpenseRepo() {
-		Map<UUID, Expense> expenses = new HashMap<UUID, Expense>();
-		return new ExpensesRepository(expenses);
+	public ExpenseRepository createExpenseRepo() {
+		return new ExpenseHibernateRepository();
 	}
 
 	@Bean
-	public IncomeService createIncomeService(IncomesRepository repo) {
+	public IncomeService createIncomeService(IncomesInMemoryRepository repo) {
 		return new IncomeService(repo);
 	}
 
 	@Bean
-	public IncomesRepository createIncomeRepo() {
+	public IncomesInMemoryRepository createIncomeRepo() {
 		Map<UUID, Income> incomes = new HashMap<UUID, Income>();
-		return new IncomesRepository(incomes);
+		return new IncomesInMemoryRepository(incomes);
+	}
+
+	@Bean
+	public HibernateTemplate hibernateTemplate() {
+		return new HibernateTemplate(sessionFactory());
+	}
+
+	@Bean
+	public SessionFactory sessionFactory() {
+		return new LocalSessionFactoryBuilder(getDataSource())
+				.addAnnotatedClasses(Cashflow.class, Expense.class)
+				.buildSessionFactory();
+	}
+
+	@Bean
+	public DataSource getDataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/testdb");
+		dataSource.setUsername("root");
+		dataSource.setPassword("mollevi88");
+
+		return dataSource;
+	}
+
+	@Bean
+	public HibernateTransactionManager transactionManager() {
+		return new HibernateTransactionManager(sessionFactory());
 	}
 }

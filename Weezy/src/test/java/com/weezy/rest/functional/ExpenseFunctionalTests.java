@@ -18,6 +18,12 @@ import org.springframework.web.client.RestTemplate;
 import com.weezy.rest.controller.fixture.RestDataFixture;
 import com.weezy.rest.domain.Expense;
 
+/**
+ * This integration test can only be processed if the service is running
+ * 
+ * @author levente
+ *
+ */
 @Ignore
 public class ExpenseFunctionalTests {
 
