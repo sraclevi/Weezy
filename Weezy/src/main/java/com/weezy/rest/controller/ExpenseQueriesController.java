@@ -1,6 +1,7 @@
 package com.weezy.rest.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ import com.weezy.core.events.expense.ExpenseEvent;
 import com.weezy.core.events.expense.RequestAllExpensesEvent;
 import com.weezy.core.events.expense.RequestExpenseEvent;
 import com.weezy.core.services.ExpenseService;
+import com.weezy.rest.domain.CashflowFrequency;
 import com.weezy.rest.domain.Expense;
 
 @Controller
@@ -43,6 +45,13 @@ public class ExpenseQueriesController {
 			expenses.add(Expense.fromExpenseDetails(detail));
 		}
 		return expenses;
+	}
+
+	@RequestMapping(value = "/frequencyEnums", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<CashflowFrequency> getFrequencyEnums() {
+		return Arrays.asList(CashflowFrequency.values());
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")

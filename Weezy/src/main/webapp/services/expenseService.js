@@ -6,6 +6,10 @@ app.service('expenseService', function($http) {
 		return $http.get('/expenses');
 	}
 
+	this.getAllFrequencies = function() {
+		return $http.get('/expenses/frequencyEnums');
+	}
+	
 	this.insertExpense = function(name, amount, frequency) {
 		var data = {
 			"name" : name,

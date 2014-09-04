@@ -11,14 +11,18 @@
 				Amount: <br /> <input data-ng-model="newExpense.amount" type="text" placeholder="Amount">
 			</div>
 			<div class="span6">
-				Frequency: <br /> <input data-ng-model="newExpense.frequency" type="text" placeholder="Frequency">
-
+				Frequency: <br /> 
+				<select data-ng-model="newExpense.frequency" data-ng-options="frequency for frequency in frequencies">
+					<option value="" data-ng-hide="newExpense.frequency">Select</option>
+				</select>
+			</div>
+			<br/>
+			<div class="span6">
 				<button id="submitExpense" class="btn btn-primary" type="button" data-ng-click="insertExpense()">Add
 					Expense</button>
 			</div>
 		</div>
-		<br />
-		<br />
+		<br /> <br />
 		<div data-ng-repeat="expense in expenses">{{expense.name}} {{expense.key}}</div>
 	</div>
 </div>

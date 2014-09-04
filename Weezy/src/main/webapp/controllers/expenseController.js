@@ -8,7 +8,9 @@ app.controller('ExpenseController', function($scope, expenseService) {
 		expenseService.getAllExpenses().then(function(dataResponse) {
 			$scope.expenses = dataResponse.data;
 		});
-		;
+		expenseService.getAllFrequencies().then(function(dataResponse) {
+			$scope.frequencies = dataResponse.data;
+		});
 	}
 
 	$scope.insertExpense = function() {
