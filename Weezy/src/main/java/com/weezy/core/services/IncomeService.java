@@ -11,13 +11,13 @@ import com.weezy.core.events.income.IncomeDetails;
 import com.weezy.core.events.income.IncomeEvent;
 import com.weezy.core.events.income.RequestAllIncomesEvent;
 import com.weezy.core.events.income.RequestIncomeEvent;
-import com.weezy.core.repository.IncomesInMemoryRepository;
+import com.weezy.core.repository.IncomeRepository;
 
 public class IncomeService {
 
-	private final IncomesInMemoryRepository	incomesRepository;
+	private final IncomeRepository	incomesRepository;
 
-	public IncomeService(IncomesInMemoryRepository incomesRepository) {
+	public IncomeService(IncomeRepository incomesRepository) {
 		this.incomesRepository = incomesRepository;
 	}
 

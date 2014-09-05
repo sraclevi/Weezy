@@ -1,9 +1,5 @@
 package com.weezy.config;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
@@ -20,7 +16,8 @@ import com.weezy.core.domain.Expense;
 import com.weezy.core.domain.Income;
 import com.weezy.core.repository.ExpenseHibernateRepository;
 import com.weezy.core.repository.ExpenseRepository;
-import com.weezy.core.repository.IncomesInMemoryRepository;
+import com.weezy.core.repository.IncomeHibernateRepository;
+import com.weezy.core.repository.IncomeRepository;
 import com.weezy.core.services.ExpenseService;
 import com.weezy.core.services.IncomeService;
 
@@ -39,14 +36,13 @@ public class CoreConfig {
 	}
 
 	@Bean
-	public IncomeService createIncomeService(IncomesInMemoryRepository repo) {
+	public IncomeService createIncomeService(IncomeRepository repo) {
 		return new IncomeService(repo);
 	}
 
 	@Bean
-	public IncomesInMemoryRepository createIncomeRepo() {
-		Map<UUID, Income> incomes = new HashMap<UUID, Income>();
-		return new IncomesInMemoryRepository(incomes);
+	public IncomeRepository createIncomeRepo() {
+		return new IncomeHibernateRepository();
 	}
 
 	@Bean
@@ -57,8 +53,8 @@ public class CoreConfig {
 	@Bean
 	public SessionFactory sessionFactory() {
 		return new LocalSessionFactoryBuilder(getDataSource())
-				.addAnnotatedClasses(Cashflow.class, Expense.class)
-				.buildSessionFactory();
+				.addAnnotatedClasses(Cashflow.class, Expense.class,
+						Income.class).buildSessionFactory();
 	}
 
 	@Bean

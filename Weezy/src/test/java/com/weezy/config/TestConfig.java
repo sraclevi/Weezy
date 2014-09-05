@@ -13,7 +13,7 @@ import com.weezy.core.domain.Expense;
 import com.weezy.core.domain.Income;
 import com.weezy.core.repository.ExpenseRepository;
 import com.weezy.core.repository.ExpensesInMemoryRepository;
-import com.weezy.core.repository.IncomesInMemoryRepository;
+import com.weezy.core.repository.IncomeInMemoryRepository;
 import com.weezy.core.services.ExpenseService;
 import com.weezy.core.services.IncomeService;
 
@@ -34,14 +34,14 @@ public class TestConfig {
 	}
 
 	@Bean
-	public IncomeService createIncomeService(IncomesInMemoryRepository repo) {
+	public IncomeService createIncomeService(IncomeInMemoryRepository repo) {
 		return new IncomeService(repo);
 	}
 
 	@Bean
-	public IncomesInMemoryRepository createIncomeRepo() {
+	public IncomeInMemoryRepository createIncomeRepo() {
 		Map<UUID, Income> incomes = new HashMap<UUID, Income>();
-		return new IncomesInMemoryRepository(incomes);
+		return new IncomeInMemoryRepository(incomes);
 	}
 
 }

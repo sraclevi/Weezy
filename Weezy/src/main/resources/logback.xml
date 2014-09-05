@@ -1,9 +1,19 @@
 <configuration>
-	<appender name="SQLROLLINGFILE" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="SQLROLLINGFILE" class="ch.qos.logback.core.FileAppender">
 		<layout>
 			<Pattern>%-4date | %msg %n</Pattern>
 		</layout>
 	</appender>
+	
+	 <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>.%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n
+            </Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+    </appender>
 
 	<logger name="org.hibernate.SQL" additivity="false">
 		<level value="DEBUG" />
@@ -14,4 +24,14 @@
 		<level value="TRACE" />
 		<appender-ref ref="SQLROLLINGFILE" />
 	</logger>
+	
+	<logger name="com.weezy" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="consoleAppender" />
+    </logger>
+ 
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="consoleAppender" />
+    </root>
 </configuration>
