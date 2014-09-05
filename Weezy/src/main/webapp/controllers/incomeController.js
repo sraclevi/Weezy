@@ -8,7 +8,9 @@ app.controller('IncomeController', function($scope, incomeService) {
 		incomeService.getAllIncomes().then(function(dataResponse) {
 			$scope.incomes = dataResponse.data;
 		});
-		;
+		incomeService.getAllFrequencies().then(function(dataResponse) {
+			$scope.incomeFrequencies = dataResponse.data;
+		});
 	}
 
 	$scope.insertIncome = function() {

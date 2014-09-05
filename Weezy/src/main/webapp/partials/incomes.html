@@ -11,8 +11,13 @@
 				Amount: <br /> <input data-ng-model="newIncome.amount" type="text" placeholder="Amount">
 			</div>
 			<div class="span6">
-				Frequency: <br /> <input data-ng-model="newIncome.frequency" type="text" placeholder="Frequency">
-
+				Frequency: <br /> 
+				<select data-ng-model="newIncome.frequency" data-ng-options="frequency for frequency in incomeFrequencies">
+					<option value="" data-ng-hide="newIncome.frequency">Select</option>
+				</select>
+			</div>
+			<br />
+			<div class="span6">
 				<button id="submitIncome" class="btn btn-primary" type="button" data-ng-click="insertIncome()">Add
 					Income</button>
 			</div>

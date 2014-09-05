@@ -9,7 +9,7 @@ app.controller('ExpenseController', function($scope, expenseService) {
 			$scope.expenses = dataResponse.data;
 		});
 		expenseService.getAllFrequencies().then(function(dataResponse) {
-			$scope.frequencies = dataResponse.data;
+			$scope.expenseFrequencies = dataResponse.data;
 		});
 	}
 

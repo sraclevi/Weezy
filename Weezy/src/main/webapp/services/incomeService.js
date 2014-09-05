@@ -5,6 +5,10 @@ app.service('incomeService', function($http) {
 	this.getAllIncomes = function() {
 		return $http.get('/incomes');
 	}
+	
+	this.getAllFrequencies = function() {
+		return $http.get('/incomes/frequencyEnums');
+	}
 
 	this.insertIncome = function(name, amount, frequency) {
 		var data = {
