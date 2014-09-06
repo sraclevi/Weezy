@@ -3,6 +3,12 @@
 		<header>
 			<h3>Expenses</h3>
 		</header>
+		
+		<div data-ng-repeat="expense in expenses">
+			<button class="btn btn-primary" type="button" data-ng-click="deleteExpense(expense.key)">Delete Expense</button>
+			{{expense.name}} {{expense.amount}} {{expense.frequency}}
+		</div>
+		
 		<div class="row">
 			<div class="span3">
 				Name: <br /> <input data-ng-model="newExpense.name" type="text" placeholder="Name">
@@ -23,6 +29,5 @@
 			</div>
 		</div>
 		<br /> <br />
-		<div data-ng-repeat="expense in expenses">{{expense.name}} {{expense.key}}</div>
 	</div>
 </div>

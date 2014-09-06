@@ -6,7 +6,9 @@ import java.util.List;
 import com.weezy.core.domain.Expense;
 import com.weezy.core.events.expense.AllExpensesEvent;
 import com.weezy.core.events.expense.CreateExpenseEvent;
+import com.weezy.core.events.expense.DeleteExpenseEvent;
 import com.weezy.core.events.expense.ExpenseCreatedEvent;
+import com.weezy.core.events.expense.ExpenseDeletedEvent;
 import com.weezy.core.events.expense.ExpenseDetails;
 import com.weezy.core.events.expense.ExpenseEvent;
 import com.weezy.core.events.expense.RequestAllExpensesEvent;
@@ -53,5 +55,29 @@ public class ExpenseService {
 
 		return new ExpenseCreatedEvent(expense.getKey(),
 				expense.toExpenseDetails());
+	}
+
+	public ExpenseDeletedEvent deleteExpense(
+			DeleteExpenseEvent deleteExpenseEvent) {
+
+		Expense expense = expensesRepository.findById(deleteExpenseEvent
+				.getKey());
+
+		if (expense == null) {
+			return ExpenseDeletedEvent.notFound(deleteExpenseEvent.getKey());
+		}
+
+		// TODOCUMENT This contains some specific domain logic, not exposed to
+		// the outside world, and not part of the
+		// persistence rules.
+
+		// if (!expense.canBeDeleted()) {
+		// return ExpenseDeletedEvent.deletionForbidden(
+		// deleteExpenseEvent.getKey(), details);
+		// }
+
+		expensesRepository.delete(deleteExpenseEvent.getKey());
+		return ExpenseDeletedEvent.deletionCompleted(deleteExpenseEvent
+				.getKey());
 	}
 }

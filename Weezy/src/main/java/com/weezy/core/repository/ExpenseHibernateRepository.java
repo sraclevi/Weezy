@@ -30,8 +30,8 @@ public class ExpenseHibernateRepository implements ExpenseRepository {
 	}
 
 	public synchronized void delete(UUID uuid) {
-		throw new UnsupportedOperationException(
-				"Delete action is not supported in hibernate cashflow repository.");
+		Expense expense = hibernateTemplate.load(Expense.class, uuid);
+		hibernateTemplate.delete(expense);
 	}
 
 }

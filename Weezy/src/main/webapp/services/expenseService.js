@@ -20,5 +20,9 @@ app.service('expenseService', function($http) {
 		};
 		$http.post('/expenses', data);
 	};
+	
+	this.deleteExpense = function(id) {
+		$http.delete('/expenses/' + id);
+	}
 
 });
