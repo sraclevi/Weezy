@@ -21,12 +21,13 @@ import com.weezy.rest.domain.CashflowFrequency;
 public class Cashflow {
 
 	protected Cashflow() {
-		key = UUID.randomUUID();
+
 	}
 
 	@Id
 	@Column(name = "`key`")
-	protected final UUID		key;
+	@Type(type = "uuid-char")
+	protected UUID				key;
 
 	@Column(name = "name")
 	protected String			name;
