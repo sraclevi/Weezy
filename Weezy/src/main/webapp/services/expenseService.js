@@ -18,11 +18,11 @@ app.service('expenseService', function($http) {
 			"to" : "2014-08-10",
 			"frequency" : frequency
 		};
-		$http.post('/expenses', data);
+		return $http.post('/expenses', data);
 	};
 	
 	this.deleteExpense = function(id) {
-		$http.delete('/expenses/' + id);
+		return $http.delete('/expenses/' + id);
 	}
 
 });

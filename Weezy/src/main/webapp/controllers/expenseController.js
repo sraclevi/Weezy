@@ -17,16 +17,18 @@ app.controller('ExpenseController', function($scope, expenseService) {
 		var name = $scope.newExpense.name;
 		var amount = $scope.newExpense.amount;
 		var frequency = $scope.newExpense.frequency;
-		expenseService.insertExpense(name, amount, frequency);
+		expenseService.insertExpense(name, amount, frequency).then(function(responsedata) {
+		    init();
+		});
 		$scope.newExpense.name = '';
 		$scope.newExpense.amount = '';
 		$scope.newExpense.frequency = '';
-		init();
 	};
 
 	$scope.deleteExpense = function(id) {
-		expenseService.deleteExpense(id);
-		init();
+		expenseService.deleteExpense(id).then(function(responsedata) {
+		    init();
+		});
 	};
 });
 
