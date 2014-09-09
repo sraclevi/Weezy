@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.weezy.core.domain.Expense;
+import com.weezy.rest.domain.DateTimeUtils;
 
 public class ExpenseServiceTest {
 
@@ -53,7 +54,7 @@ public class ExpenseServiceTest {
 		List<DateTime> allExpenseMonthsFromExpense = ExpenseService
 				.getAllMonthsFromExpense(expense);
 
-		DateTime expectedMonth = new DateTime(2014, 9, 1, 15, 0);
+		DateTime expectedMonth = DateTimeUtils.getFirstDayOfMonthWithSameHour(from);
 		Assert.assertEquals(expectedMonth, allExpenseMonthsFromExpense.get(0));
 	}
 }

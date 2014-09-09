@@ -19,6 +19,7 @@ import com.weezy.core.events.expense.ExpenseEvent;
 import com.weezy.core.events.expense.RequestAllExpensesEvent;
 import com.weezy.core.events.expense.RequestExpenseEvent;
 import com.weezy.core.repository.ExpenseRepository;
+import com.weezy.rest.domain.DateTimeUtils;
 
 public class ExpenseService {
 
@@ -100,11 +101,8 @@ public class ExpenseService {
 		DateTime from = expense.getFrom();
 		DateTime to = expense.getTo();
 
-		DateTime actualMonth = new DateTime(from.getYear(),
-				from.getMonthOfYear(), 1, from.getHourOfDay(), 0,
-				from.getChronology());
-		DateTime lastMonth = new DateTime(to.getYear(), to.getMonthOfYear(), 1,
-				0, 0);
+		DateTime actualMonth = DateTimeUtils.getFirstDayOfMonthWithSameHour(from);
+		DateTime lastMonth = DateTimeUtils.getFirstDayOfMonthWithSameHour(to);
 		lastMonth = lastMonth.plusMonths(1);
 
 		List<DateTime> months = new ArrayList<DateTime>();

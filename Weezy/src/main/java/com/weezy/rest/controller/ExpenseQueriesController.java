@@ -26,7 +26,7 @@ import com.weezy.core.events.expense.RequestAllExpensesEvent;
 import com.weezy.core.events.expense.RequestExpenseEvent;
 import com.weezy.core.services.ExpenseService;
 import com.weezy.rest.domain.CashflowFrequency;
-import com.weezy.rest.domain.CustomDateSerializer;
+import com.weezy.rest.domain.DateTimeUtils;
 import com.weezy.rest.domain.Expense;
 
 @Controller
@@ -85,7 +85,7 @@ public class ExpenseQueriesController {
 		Set<String> serializedMonths = new HashSet<String>();
 
 		for (DateTime month : months) {
-			serializedMonths.add(CustomDateSerializer.FORMATTER.print(month));
+			serializedMonths.add(DateTimeUtils.FORMATTER.print(month));
 		}
 		return serializedMonths;
 	}

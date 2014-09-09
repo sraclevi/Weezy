@@ -19,7 +19,7 @@ public class CustomDateDeserializer extends JsonDeserializer<DateTime> {
 			JsonProcessingException {
 		ObjectCodec oc = jsonParser.getCodec();
 		JsonNode node = oc.readTree(jsonParser);
-		return CustomDateSerializer.FORMATTER.parseDateTime(node.textValue());
+		return DateTimeUtils.FORMATTER.parseDateTime(node.textValue());
 
 	}
 
