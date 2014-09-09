@@ -10,12 +10,16 @@ app.service('expenseService', function($http) {
 		return $http.get('/expenses/frequencyEnums');
 	}
 	
-	this.insertExpense = function(name, amount, frequency) {
+	this.getAllExpenseMonths = function() {
+		return $http.get('/expenses/expenseMonths');
+	}
+	
+	this.insertExpense = function(name, amount, frequency, from, to) {
 		var data = {
 			"name" : name,
 			"amount" : amount,
-			"from" : "2014-08-07",
-			"to" : "2014-08-10",
+			"from" : from,
+			"to" : to,
 			"frequency" : frequency
 		};
 		return $http.post('/expenses', data);

@@ -1,7 +1,12 @@
 package com.weezy.core.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.joda.time.DateTime;
 
 import com.weezy.core.domain.Expense;
 import com.weezy.core.events.expense.AllExpensesEvent;
@@ -79,5 +84,35 @@ public class ExpenseService {
 		expensesRepository.delete(deleteExpenseEvent.getKey());
 		return ExpenseDeletedEvent.deletionCompleted(deleteExpenseEvent
 				.getKey());
+	}
+
+	public Set<DateTime> getAllExpenseMonths() {
+		Collection<Expense> expenses = expensesRepository.findAll();
+		Set<DateTime> monthsWithExpenses = new HashSet<DateTime>();
+		for (Expense expense : expenses) {
+			monthsWithExpenses.addAll(getAllMonthsFromExpense(expense));
+		}
+		return monthsWithExpenses;
+	}
+
+	static List<DateTime> getAllMonthsFromExpense(Expense expense) {
+
+		DateTime from = expense.getFrom();
+		DateTime to = expense.getTo();
+
+		DateTime actualMonth = new DateTime(from.getYear(),
+				from.getMonthOfYear(), 1, from.getHourOfDay(), 0,
+				from.getChronology());
+		DateTime lastMonth = new DateTime(to.getYear(), to.getMonthOfYear(), 1,
+				0, 0);
+		lastMonth = lastMonth.plusMonths(1);
+
+		List<DateTime> months = new ArrayList<DateTime>();
+
+		while (actualMonth.isBefore(lastMonth)) {
+			months.add(actualMonth);
+			actualMonth = actualMonth.plusMonths(1);
+		}
+		return months;
 	}
 }

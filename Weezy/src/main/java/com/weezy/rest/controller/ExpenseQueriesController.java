@@ -2,9 +2,12 @@ package com.weezy.rest.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import com.weezy.core.events.expense.RequestAllExpensesEvent;
 import com.weezy.core.events.expense.RequestExpenseEvent;
 import com.weezy.core.services.ExpenseService;
 import com.weezy.rest.domain.CashflowFrequency;
+import com.weezy.rest.domain.CustomDateSerializer;
 import com.weezy.rest.domain.Expense;
 
 @Controller
@@ -68,6 +72,22 @@ public class ExpenseQueriesController {
 				.getExpenseDetails());
 
 		return new ResponseEntity<Expense>(expense, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/expenseMonths", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Set<String> getExpenseMonths() {
+		Set<DateTime> months = expenseService.getAllExpenseMonths();
+
+		// as it is not a field, we can not annotate it. Maybe worth to wrap
+		// into an object
+		Set<String> serializedMonths = new HashSet<String>();
+
+		for (DateTime month : months) {
+			serializedMonths.add(CustomDateSerializer.FORMATTER.print(month));
+		}
+		return serializedMonths;
 	}
 
 }

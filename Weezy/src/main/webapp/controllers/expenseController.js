@@ -11,13 +11,18 @@ app.controller('ExpenseController', function($scope, expenseService) {
 		expenseService.getAllFrequencies().then(function(dataResponse) {
 			$scope.expenseFrequencies = dataResponse.data;
 		});
+		expenseService.getAllExpenseMonths().then(function(dataResponse) {
+			$scope.expenseMonths = dataResponse.data;
+		});
 	}
 
 	$scope.insertExpense = function() {
 		var name = $scope.newExpense.name;
 		var amount = $scope.newExpense.amount;
 		var frequency = $scope.newExpense.frequency;
-		expenseService.insertExpense(name, amount, frequency).then(function(responsedata) {
+		var from = $scope.newExpense.from;
+		var to = $scope.newExpense.to;
+		expenseService.insertExpense(name, amount, frequency, from, to).then(function(responsedata) {
 		    init();
 		});
 		$scope.newExpense.name = '';
