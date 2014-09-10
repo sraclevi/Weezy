@@ -10,9 +10,11 @@
 		</div>
 		<br/>
 		Sum (per month) : 
-		<select data-ng-model="month" data-ng-options="month for month in expenseMonths">
+		<select data-ng-model="month" data-ng-options="month for month in expenseMonths" data-ng-change="getMonthlyAmount()">
 			<option value="" data-ng-hide="month">Select</option>
-		</select> <br />
+		</select> 
+		{{monthlyAmount}}
+		<br />
 		<div class="row">
 			<div class="span3">
 				Name: <br /> <input data-ng-model="newExpense.name" type="text" placeholder="Name">

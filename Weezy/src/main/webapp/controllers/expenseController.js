@@ -35,6 +35,13 @@ app.controller('ExpenseController', function($scope, expenseService) {
 		    init();
 		});
 	};
+	
+	$scope.getMonthlyAmount = function() {
+		var month = $scope.month;
+		expenseService.getMonthlyAmount(month).then(function(responsedata) {
+			$scope.monthlyAmount = responsedata.data;
+		});
+	};
 });
 
 app.controller('NavbarController', function($scope, $location) {

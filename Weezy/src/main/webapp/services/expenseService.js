@@ -28,5 +28,9 @@ app.service('expenseService', function($http) {
 	this.deleteExpense = function(id) {
 		return $http.delete('/expenses/' + id);
 	}
+	
+	this.getMonthlyAmount = function(month) {
+		return $http.get('/expenses/amountForMonth/' + month);
+	}
 
 });
