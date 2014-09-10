@@ -74,6 +74,14 @@ public class ExpenseQueriesController {
 		return new ResponseEntity<Expense>(expense, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/amountForMonth/{month}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Integer getExpenseAmountForMonth(@PathVariable String month) {
+		DateTime dtMonth = DateTimeUtils.parseString(month);
+		return expenseService.requestAmountForMonth(dtMonth);
+	}
+
 	@RequestMapping(value = "/expenseMonths", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody

@@ -16,6 +16,6 @@ public class CustomDateSerializer extends JsonSerializer<DateTime> {
 			SerializerProvider arg2) throws IOException,
 			JsonProcessingException {
 
-		gen.writeString(DateTimeUtils.FORMATTER.print(value));
+		gen.writeString(DateTimeUtils.dateToString(value));
 	}
 }

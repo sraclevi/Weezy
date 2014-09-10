@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.UUID;
 
+import org.joda.time.DateTime;
+
 import com.weezy.core.domain.Expense;
 
 public class ExpensesInMemoryRepository implements ExpenseRepository {
@@ -34,5 +36,11 @@ public class ExpensesInMemoryRepository implements ExpenseRepository {
 		if (expenses.containsKey(uuid)) {
 			expenses.remove(uuid);
 		}
+	}
+
+	@Override
+	public Collection<Integer> findAllAmountForMonth(DateTime month) {
+		throw new UnsupportedOperationException(
+				"findAllWithMonth is not supported in inmemory test classes");
 	}
 }

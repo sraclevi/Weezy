@@ -101,7 +101,8 @@ public class ExpenseService {
 		DateTime from = expense.getFrom();
 		DateTime to = expense.getTo();
 
-		DateTime actualMonth = DateTimeUtils.getFirstDayOfMonthWithSameHour(from);
+		DateTime actualMonth = DateTimeUtils
+				.getFirstDayOfMonthWithSameHour(from);
 		DateTime lastMonth = DateTimeUtils.getFirstDayOfMonthWithSameHour(to);
 		lastMonth = lastMonth.plusMonths(1);
 
@@ -112,5 +113,16 @@ public class ExpenseService {
 			actualMonth = actualMonth.plusMonths(1);
 		}
 		return months;
+	}
+
+	public int requestAmountForMonth(DateTime month) {
+		Collection<Integer> amounts = expensesRepository
+				.findAllAmountForMonth(month);
+		int sum = 0;
+		for (Integer amount : amounts) {
+			sum += amount;
+		}
+		return sum;
+
 	}
 }

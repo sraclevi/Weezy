@@ -25,4 +25,11 @@ public class DateTimeUtils {
 		return firstDay;
 	}
 
+	public static DateTime parseString(String month) {
+		return FORMATTER.parseDateTime(month);
+	}
+
+	public static String dateToString(DateTime dateTime) {
+		return FORMATTER.print(dateTime);
+	}
 }

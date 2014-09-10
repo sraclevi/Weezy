@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
@@ -12,6 +13,8 @@ import com.weezy.core.domain.Expense;
 
 @Transactional
 public class ExpenseHibernateRepository implements ExpenseRepository {
+
+	private static String		SELECT_FOR_MONTH	= "SELECT e.amount FROM Expense e WHERE e.from <= ? and e.to >= ?";
 
 	@Autowired
 	private HibernateTemplate	hibernateTemplate;
@@ -34,4 +37,10 @@ public class ExpenseHibernateRepository implements ExpenseRepository {
 		hibernateTemplate.delete(expense);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<Integer> findAllAmountForMonth(DateTime monthStart) {
+		return (Collection<Integer>) hibernateTemplate.find(SELECT_FOR_MONTH,
+				monthStart, monthStart);
+	}
 }
