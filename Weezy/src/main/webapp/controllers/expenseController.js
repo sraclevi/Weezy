@@ -28,6 +28,8 @@ app.controller('ExpenseController', function($scope, expenseService) {
 		$scope.newExpense.name = '';
 		$scope.newExpense.amount = '';
 		$scope.newExpense.frequency = '';
+		$scope.newExpense.from = '';
+		$scope.newExpense.to = '';
 	};
 
 	$scope.deleteExpense = function(id) {
@@ -37,7 +39,7 @@ app.controller('ExpenseController', function($scope, expenseService) {
 	};
 	
 	$scope.getMonthlyAmount = function() {
-		var month = $scope.month;
+		var month = $scope.selectedMonth;
 		expenseService.getMonthlyAmount(month).then(function(responsedata) {
 			$scope.monthlyAmount = responsedata.data;
 		});

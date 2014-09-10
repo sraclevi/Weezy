@@ -19,19 +19,23 @@ public class ExpenseHibernateRepository implements ExpenseRepository {
 	@Autowired
 	private HibernateTemplate	hibernateTemplate;
 
+	@Override
 	public Expense save(Expense expense) {
 		hibernateTemplate.save(expense);
 		return expense;
 	}
 
+	@Override
 	public Collection<Expense> findAll() {
 		return hibernateTemplate.loadAll(Expense.class);
 	}
 
+	@Override
 	public Expense findById(UUID uuid) {
 		return hibernateTemplate.load(Expense.class, uuid);
 	}
 
+	@Override
 	public synchronized void delete(UUID uuid) {
 		Expense expense = hibernateTemplate.load(Expense.class, uuid);
 		hibernateTemplate.delete(expense);

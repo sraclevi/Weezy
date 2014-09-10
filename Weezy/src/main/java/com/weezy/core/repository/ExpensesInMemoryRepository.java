@@ -18,20 +18,24 @@ public class ExpensesInMemoryRepository implements ExpenseRepository {
 		this.expenses = expenses;
 	}
 
+	@Override
 	public Collection<Expense> findAll() {
 		return Collections.unmodifiableList(new ArrayList<Expense>(expenses
 				.values()));
 	}
 
+	@Override
 	public Expense save(Expense expense) {
 		expenses.put(expense.getKey(), expense);
 		return expense;
 	}
 
+	@Override
 	public Expense findById(UUID uuid) {
 		return expenses.get(uuid);
 	}
 
+	@Override
 	public synchronized void delete(UUID uuid) {
 		if (expenses.containsKey(uuid)) {
 			expenses.remove(uuid);
